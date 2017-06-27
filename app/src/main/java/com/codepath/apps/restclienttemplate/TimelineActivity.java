@@ -8,8 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
+import com.codepath.apps.restclienttemplate.models.User;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
@@ -28,10 +30,12 @@ public class TimelineActivity extends AppCompatActivity {
     TweetAdapter tweetAdapter;
     ArrayList<Tweet> tweets;
     @BindView(R.id.rvTweet) RecyclerView rvTweets;
+    private final int REQUEST_CODE = 20;
 
     public void onComposeAction(MenuItem mi) {
         Intent intent = new Intent(TimelineActivity.this, ComposeActivity.class);
-        TimelineActivity.this.startActivity(intent);
+        intent.putExtra("mode", 2); // pass arbitrary data to launched activity
+        TimelineActivity.this.startActivityForResult(intent, REQUEST_CODE);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,5 +105,30 @@ public class TimelineActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    // ActivityOne.java, time to handle the result of the sub-activity
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // REQUEST_CODE is defined above
+        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
+            // Extract name value from result extras
+            String body = data.getExtras().getString("body");
+            String user = data.getExtras().getString("user");
+            int code = data.getExtras().getInt("code", 0);
+            Toast.makeText(this, "Status updated", Toast.LENGTH_SHORT).show();
+
+            // Use data parameter
+            Tweet tweet = (Tweet) data.getSerializableExtra("tweet");
+            tweet.body = body.toString();
+
+            User newUser = new User();
+            newUser.name = user.toString();
+            tweet.user = newUser;
+
+            tweets.add(0, tweet);
+            tweetAdapter.notifyItemInserted(0);
+            rvTweets.scrollToPosition(0);
+        }
     }
 }

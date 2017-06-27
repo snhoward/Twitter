@@ -74,9 +74,4 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
             ButterKnife.bind(this, itemView);
         }
     }
-
-
-
-
-
 }
