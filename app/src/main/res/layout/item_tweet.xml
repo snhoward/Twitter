@@ -29,4 +29,13 @@
         android:layout_below="@+id/tvUsername"
         android:layout_alignStart="@+id/tvUsername"
         android:text="TextView" />
+
+    <TextView
+        android:id="@+id/tvTimeStamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvUsername"
+        android:layout_marginLeft="5dp"
+        android:layout_toEndOf="@+id/tvUsername"
+        android:text="TextView" />
 </RelativeLayout>

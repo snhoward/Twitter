@@ -1,10 +1,13 @@
 package com.codepath.apps.restclienttemplate;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -26,6 +29,10 @@ public class TimelineActivity extends AppCompatActivity {
     ArrayList<Tweet> tweets;
     @BindView(R.id.rvTweet) RecyclerView rvTweets;
 
+    public void onComposeAction(MenuItem mi) {
+        Intent intent = new Intent(TimelineActivity.this, ComposeActivity.class);
+        TimelineActivity.this.startActivity(intent);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,14 +40,13 @@ public class TimelineActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         client = TwitterApp.getRestClient();
-        // find the RecyclerView;
         // init the ArrayList
         tweets = new ArrayList<>();
         // construct the adapter from this data source
         tweetAdapter = new TweetAdapter(tweets);
         // RecyclerView setup (layout manager, use adapter)
-        rvTweets.setLayoutManager(new LinearLayoutManager(this));
-        rvTweets.setAdapter(tweetAdapter);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        rvTweets.setLayoutManager(linearLayoutManager);
         populateTimeline();
     }
 
@@ -67,10 +73,7 @@ public class TimelineActivity extends AppCompatActivity {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-
-
                 }
-
             }
 
             @Override
@@ -91,6 +94,12 @@ public class TimelineActivity extends AppCompatActivity {
                 throwable.printStackTrace();
             }
         });
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
     }
 }
