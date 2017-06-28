@@ -43,12 +43,14 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
     }
 
     // bind the values based on the position of the element
+    @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         // get the data according to the position
         Tweet tweet = mTweets.get(position);
 
         // populate the views according to this data
-        holder.tvUsername.setText("@" + tweet.user.name);
+        String username = "@" + tweet.user.name;
+        holder.tvUsername.setText(username);
         holder.tvBody.setText(tweet.body);
         holder.tvTimeStamp.setText(tweet.getRelativeTimeAgo(tweet.createdAt));
 
