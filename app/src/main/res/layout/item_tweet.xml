@@ -52,4 +52,41 @@
         android:layout_toEndOf="@+id/ivProfileImage"
         android:text="TextView"
         android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/btnRetweet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/btnReply"
+        android:layout_below="@+id/tvBody"
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        android:scaleType="center"
+        android:tint="@color/inline_action"
+        app:srcCompat="@drawable/ic_retweet" />
+
+    <ImageButton
+        android:id="@+id/btnHeart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvBody"
+        android:layout_toRightOf="@+id/btnRetweet"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="30dp"
+        android:background="@android:color/transparent"
+        android:tint="@color/inline_action"
+        app:srcCompat="@drawable/ic_heart" />
+
+    <ImageButton
+        android:id="@+id/btnReply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvBody"
+        android:layout_below="@+id/tvBody"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/transparent"
+        android:tint="@color/inline_action"
+        app:srcCompat="@drawable/ic_reply" />
 </RelativeLayout>
