@@ -21,6 +21,7 @@ public class ComposeActivity extends AppCompatActivity {
 
     TwitterClient client;
     @BindView(R.id.etTweet) EditText etTweet;
+    // Instance of the progress action-view
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

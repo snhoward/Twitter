@@ -8,4 +8,15 @@
         app:showAsAction="ifRoom"
         android:title="Compose">
     </item>
+
+    <item
+        android:id="@+id/miActionProgress"
+        android:icon="@color/twitter_blue_30"
+        android:orderInCategory="100"
+        android:title="Loading..."
+        android:visible="false"
+        app:actionLayout="@layout/action_view_progress"
+        app:showAsAction="always" />
+
 </menu>
+
