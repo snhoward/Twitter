@@ -21,14 +21,14 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="5dp"
         android:layout_marginStart="68dp"
-        android:layout_toEndOf="@+id/tvName"
+        android:layout_toEndOf="@+id/tvUsername"
         android:text="TextView" />
 
     <TextView
         android:id="@+id/tvBody"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/tvName"
+        android:layout_alignStart="@+id/tvUsername"
         android:layout_below="@+id/tvScreenName"
         android:lineSpacingExtra="5dp"
         android:text="TextView" />
@@ -43,7 +43,7 @@
         android:layout_alignParentEnd="true" />
 
     <TextView
-        android:id="@+id/tvName"
+        android:id="@+id/tvUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"

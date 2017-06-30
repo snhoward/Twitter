@@ -8,11 +8,12 @@
     tools:context="com.codepath.apps.restclienttemplate.DetailActivity">
 
     <android.support.design.widget.AppBarLayout
-        android:layout_width="384dp"
+        android:id="@+id/appBarLayout4"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteY="0dp"
+        android:theme="@style/TwitterTheme.AppBarOverlay"
         tools:layout_editor_absoluteX="0dp"
-        android:theme="@style/TwitterTheme.NoActionBar">
+        tools:layout_editor_absoluteY="0dp">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -32,5 +33,78 @@
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
+
+    <ImageView
+        android:id="@+id/ivProfileImage"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        app:srcCompat="@android:color/black"
+        android:layout_below="@+id/appBarLayout4"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/tvScreenName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvUsername"
+        android:layout_below="@+id/tvUsername"
+        android:text="TextView"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvBody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/ivProfileImage"
+        android:layout_below="@+id/ivProfileImage"
+        android:layout_marginLeft="5dp"
+        android:lineSpacingExtra="5dp"
+        android:text="TextView"
+        android:textColor="@android:color/black"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/tvTimeStamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvBody"
+        android:layout_below="@+id/tvBody"
+        android:layout_marginRight="5dp"
+        android:text="TextView"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appBarLayout4"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/ivProfileImage"
+        android:text="TextView"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvRetweetCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="18sp"
+        android:layout_below="@+id/tvTimeStamp"
+        android:layout_alignStart="@+id/tvTimeStamp" />
+
+    <TextView
+        android:id="@+id/tvFavoriteCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvTimeStamp"
+        android:layout_marginLeft="5dp"
+        android:layout_toEndOf="@+id/tvRetweetCount"
+        android:text="TextView"
+        android:textSize="18sp" />
 
 </RelativeLayout>

@@ -31,7 +31,6 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
     // pass in the Tweets array in the constructor
     public TweetAdapter(List<Tweet> tweets) {
         mTweets = tweets;
-
     }
 
     // for each row, inflate the layout and cache references into ViewHolder class
@@ -62,8 +61,6 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         String name = tweet.user.name;
         holder.tvName.setText(name);
 
-
-
         Glide.with(context)
                 .load(tweet.user.profileImageUrl)
                 .into(holder.ivProfileImage);
@@ -80,13 +77,14 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         @BindView(R.id.tvScreenName) public TextView tvScreenName;
         @BindView(R.id.tvBody) public TextView tvBody;
         @BindView(R.id.tvTimeStamp) public TextView tvTimeStamp;
-        @BindView(R.id.tvName) public TextView tvName;
+        @BindView(R.id.tvUsername) public TextView tvName;
         @BindView(R.id.tvFavoriteCount) public TextView tvFavoriteCount;
         @BindView(R.id.tvRetweetCount) public TextView tvRetweetCount;
 
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(this);
         }
 
         @Override
@@ -110,12 +108,6 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
     // Clean all elements of the recycler
     public void clear() {
         mTweets.clear();
-        notifyDataSetChanged();
-    }
-
-    // Add a list of items -- change to type used
-    public void addAll(List<Tweet> list) {
-        mTweets.addAll(list);
         notifyDataSetChanged();
     }
 }
