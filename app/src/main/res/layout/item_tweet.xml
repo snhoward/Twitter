@@ -139,4 +139,11 @@
         android:layout_marginTop="18dp"
         android:visibility="gone"
         app:srcCompat="@android:color/black" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/medium_gray_50"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/ivMedia" />
 </RelativeLayout>

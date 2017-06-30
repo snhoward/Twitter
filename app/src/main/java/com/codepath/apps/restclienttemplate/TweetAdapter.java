@@ -70,8 +70,9 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
             Glide.with(context)
                     .load(tweet.mediaURL)
                     .into(holder.ivMedia);
+        } else {
+            holder.ivMedia.setVisibility(View.GONE);
         }
-        tweet.mediaURL = null;
     }
 
     @Override

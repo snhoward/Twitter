@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,6 +27,7 @@ public class DetailActivity extends AppCompatActivity {
     @BindView(R.id.tvFavoriteCount) TextView tvFavoriteCount;
     @BindView(R.id.tvRetweetCount) TextView tvRetweetCount;
     @BindView(R.id.ivProfileImage) ImageView ivProfileImage;
+    @BindView(R.id.ivMedia) ImageView ivMedia;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,5 +54,13 @@ public class DetailActivity extends AppCompatActivity {
                 .load(tweet.user.profileImageUrl)
                 .into(ivProfileImage);
 
+        if(tweet.mediaURL != null) {
+            ivMedia.setVisibility(View.VISIBLE);
+            Glide.with(ivMedia.getContext())
+                    .load(tweet.mediaURL)
+                    .into(ivMedia);
+        } else {
+            ivMedia.setVisibility(View.GONE);
+        }
     }
 }
