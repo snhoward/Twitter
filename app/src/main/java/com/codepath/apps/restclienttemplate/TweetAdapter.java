@@ -76,6 +76,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         @BindView(R.id.tvTimeStamp) public TextView tvTimeStamp;
         @BindView(R.id.tvName) public TextView tvName;
 
+
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
@@ -94,3 +95,8 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         notifyDataSetChanged();
     }
 }
+
+
+//    @BindView(R.id.btnRetweet) public Button btnRetweet;
+//    @BindView(R.id.btnHeart) public Button btnHeart;
+//    @BindView(R.id.btnReply) public Button btnReply;

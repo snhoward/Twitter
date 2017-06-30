@@ -51,13 +51,15 @@
         android:layout_marginLeft="5dp"
         android:layout_toEndOf="@+id/ivProfileImage"
         android:text="TextView"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
         android:textStyle="bold" />
 
     <ImageButton
         android:id="@+id/btnRetweet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="5dp"
         android:layout_toRightOf="@+id/btnReply"
         android:layout_below="@+id/tvBody"
@@ -65,7 +67,7 @@
         android:background="@android:color/transparent"
         android:scaleType="center"
         android:tint="@color/inline_action"
-        app:srcCompat="@drawable/ic_retweet" />
+        app:srcCompat="@drawable/ic_retweet"/>
 
     <ImageButton
         android:id="@+id/btnHeart"
@@ -74,10 +76,10 @@
         android:layout_below="@+id/tvBody"
         android:layout_toRightOf="@+id/btnRetweet"
         android:layout_marginTop="5dp"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="40dp"
         android:background="@android:color/transparent"
         android:tint="@color/inline_action"
-        app:srcCompat="@drawable/ic_heart" />
+        app:srcCompat="@drawable/ic_heart"/>
 
     <ImageButton
         android:id="@+id/btnReply"
@@ -88,5 +90,17 @@
         android:layout_marginTop="5dp"
         android:background="@android:color/transparent"
         android:tint="@color/inline_action"
-        app:srcCompat="@drawable/ic_reply" />
+        app:srcCompat="@drawable/ic_reply"/>
+
+    <ImageButton
+        android:id="@+id/btnDirectMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvBody"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/btnHeart"
+        android:background="@android:color/transparent"
+        android:tint="@color/inline_action"
+        app:srcCompat="@drawable/ic_dm" />
 </RelativeLayout>

@@ -2,15 +2,15 @@ package com.codepath.apps.restclienttemplate;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.view.MenuItemCompat;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ProgressBar;
+import android.view.View;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -26,32 +26,38 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import cz.msebera.android.httpclient.Header;
 
-public class TimelineActivity extends AppCompatActivity {
+public class AltTimelineActivity extends AppCompatActivity {
 
     TwitterClient client;
     TweetAdapter tweetAdapter;
     ArrayList<Tweet> tweets;
-    @BindView(R.id.rvTweet) RecyclerView rvTweets;
+    @BindView(R.id.rvTweets) RecyclerView rvTweets;
     private final int REQUEST_CODE = 20;
     private SwipeRefreshLayout swipeContainer;
     // Instance of the progress action-view
     MenuItem miActionProgressItem;
 
 
-    public void onComposeAction(MenuItem mi) {
-        Intent intent = new Intent(TimelineActivity.this, ComposeActivity.class);
-        intent.putExtra("mode", 2); // pass arbitrary data to launched activity
-        TimelineActivity.this.startActivityForResult(intent, REQUEST_CODE);
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_timeline);
+        setContentView(R.layout.activity_alt_timeline);
         ButterKnife.bind(this);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setIcon(R.drawable.ic_launcher);
+
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabCompose);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AltTimelineActivity.this, ComposeActivity.class);
+                intent.putExtra("mode", 2); // pass arbitrary data to launched activity
+                AltTimelineActivity.this.startActivityForResult(intent, REQUEST_CODE);
+            }
+        });
 
         client = TwitterApp.getRestClient();
         // init the ArrayList
@@ -63,8 +69,7 @@ public class TimelineActivity extends AppCompatActivity {
         rvTweets.setLayoutManager(linearLayoutManager);
         // set the adapter
         rvTweets.setAdapter(tweetAdapter);
-//        populateTimeline();
-        // Lookup the swipe container view
+        populateTimeline();
         swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
         // Setup refresh listener which triggers new data loading
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -89,17 +94,17 @@ public class TimelineActivity extends AppCompatActivity {
     }
 
     private void populateTimeline() {
-        showProgressBar();
+//        showProgressBar();
         client.getHomeTimeline(new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                hideProgressBar();
+//                hideProgressBar();
                 Log.d("TwitterClient", response.toString());
             }
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-                hideProgressBar();
+//                hideProgressBar();
                 tweetAdapter.clear();
 //                Log.d("TwitterClient", response.toString());
                 // iterate through the JSON array
@@ -121,32 +126,25 @@ public class TimelineActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                hideProgressBar();
+//                hideProgressBar();
                 Log.d("TwitterClient", responseString);
                 throwable.printStackTrace();
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                hideProgressBar();
+//                hideProgressBar();
                 Log.d("TwitterClient", errorResponse.toString());
                 throwable.printStackTrace();
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
-                hideProgressBar();
+//                hideProgressBar();
                 Log.d("TwitterClient", errorResponse.toString());
                 throwable.printStackTrace();
             }
         });
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
     }
 
     // ActivityOne.java, time to handle the result of the sub-activity
@@ -162,24 +160,25 @@ public class TimelineActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        // Store instance of the menu item containing progress
-        miActionProgressItem = menu.findItem(R.id.miActionProgress);
-        // Extract the action-view from the menu item
-        ProgressBar v =  (ProgressBar) MenuItemCompat.getActionView(miActionProgressItem);
-        // Return to finish
-        populateTimeline();
-        return super.onPrepareOptionsMenu(menu);
-    }
+//    @Override
+//    public boolean onPrepareOptionsMenu(Menu menu) {
+//        // Store instance of the menu item containing progress
+//        miActionProgressItem = menu.findItem(R.id.miActionProgress);
+//        // Extract the action-view from the menu item
+//        ProgressBar v =  (ProgressBar) MenuItemCompat.getActionView(miActionProgressItem);
+//        // Return to finish
+//        populateTimeline();
+//        return super.onPrepareOptionsMenu(menu);
+//    }
 
-    public void showProgressBar() {
-        // Show progress item
-        miActionProgressItem.setVisible(true);
-    }
+//    public void showProgressBar() {
+//        // Show progress item
+//        miActionProgressItem.setVisible(true);
+//    }
+//
+//    public void hideProgressBar() {
+//        // Hide progress item
+//        miActionProgressItem.setVisible(false);
+//    }
 
-    public void hideProgressBar() {
-        // Hide progress item
-        miActionProgressItem.setVisible(false);
-    }
 }

@@ -10,11 +10,11 @@
     </style>
 
     <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme" >
+    <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
-    <style name="TwitterTheme" parent="AppBaseTheme" >
+    <style name="TwitterTheme" parent="AppBaseTheme">
         <item name="colorPrimary">@color/twitter_blue</item>
         <item name="colorPrimaryDark">@color/twitter_blue_fill_pressed</item>
         <item name="colorAccent">@color/twitter_blue_30</item>
@@ -41,5 +41,14 @@
     <color name="inline_action_pressed">@color/medium_gray_50</color>
     <color name="inline_action_retweet">@color/medium_green</color>
     <color name="inline_action_retweet_pressed">@color/medium_gray_50</color>
+
+    <style name="TwitterTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="TwitterTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="TwitterTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

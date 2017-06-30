@@ -3,6 +3,7 @@ package com.codepath.apps.restclienttemplate;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 
@@ -29,6 +30,10 @@ public class ComposeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_compose);
         ButterKnife.bind(this);
         client = TwitterApp.getRestClient();
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
     public void sendRequest(View view) {

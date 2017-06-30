@@ -34,7 +34,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".TimelineActivity" />
-        <activity android:name=".ComposeActivity"></activity>
+        <activity
+            android:name=".ComposeActivity"
+            android:theme="@style/TwitterTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".AltTimelineActivity"
+            android:label="@string/title_activity_alt_compose"
+            android:theme="@style/TwitterTheme.NoActionBar">
+
+        </activity>
     </application>
 
 </manifest>
