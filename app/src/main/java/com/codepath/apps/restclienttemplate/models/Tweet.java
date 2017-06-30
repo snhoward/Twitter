@@ -26,6 +26,7 @@ public class Tweet {
     public boolean favorited;
     public int retweetCount;
     public boolean retweeted;
+    public String mediaURL;
 
 
     // no-arg, empty constructor required for Parceler
@@ -34,7 +35,6 @@ public class Tweet {
     // deserialize the data
     public static Tweet fromJSON(JSONObject jsonObject) throws JSONException {
         Tweet tweet = new Tweet();
-
         // extract the values
         tweet.body = jsonObject.getString("text");
         tweet.uid = jsonObject.getLong("id");
@@ -44,6 +44,11 @@ public class Tweet {
         tweet.favorited = jsonObject.getBoolean("favorited");
         tweet.retweetCount = jsonObject.getInt("retweet_count");
         tweet.retweeted = jsonObject.getBoolean("retweeted");
+
+        tweet.mediaURL = null;
+        if(jsonObject.getJSONObject("entities").has("media") && jsonObject.getJSONObject("entities").getJSONArray("media").length() > 0) {
+            tweet.mediaURL = ((JSONObject) jsonObject.getJSONObject("entities").getJSONArray("media").get(0)).getString("media_url");
+        }
         return tweet;
     }
 

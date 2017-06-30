@@ -64,6 +64,14 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         Glide.with(context)
                 .load(tweet.user.profileImageUrl)
                 .into(holder.ivProfileImage);
+
+        if(tweet.mediaURL != null) {
+            holder.ivMedia.setVisibility(View.VISIBLE);
+            Glide.with(context)
+                    .load(tweet.mediaURL)
+                    .into(holder.ivMedia);
+        }
+        tweet.mediaURL = null;
     }
 
     @Override
@@ -80,6 +88,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         @BindView(R.id.tvUsername) public TextView tvName;
         @BindView(R.id.tvFavoriteCount) public TextView tvFavoriteCount;
         @BindView(R.id.tvRetweetCount) public TextView tvRetweetCount;
+        @BindView(R.id.ivMedia) public ImageView ivMedia;
 
         public ViewHolder(View itemView) {
             super(itemView);

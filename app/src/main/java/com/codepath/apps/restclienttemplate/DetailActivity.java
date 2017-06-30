@@ -41,7 +41,7 @@ public class DetailActivity extends AppCompatActivity {
         tweet = (Tweet) Parcels.unwrap(getIntent().getParcelableExtra(Tweet.class.getSimpleName()));
         Log.d("DetailActivity", String.format("Showing details for '%s'", tweet.user));
         // set the title and overview
-        tvScreenName.setText(tweet.user.screenName);
+        tvScreenName.setText("@" + tweet.user.screenName);
         tvUsername.setText(tweet.user.name);
         tvBody.setText(tweet.body);
         tvFavoriteCount.setText("" + tweet.favoriteCount + " Likes");

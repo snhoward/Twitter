@@ -37,10 +37,10 @@
         android:id="@+id/tvTimeStamp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="5dp"
-        android:text="TextView"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_marginRight="5dp"
+        android:text="TextView" />
 
     <TextView
         android:id="@+id/tvUsername"
@@ -88,8 +88,8 @@
         android:layout_height="20dp"
         android:layout_alignStart="@+id/tvBody"
         android:layout_below="@+id/tvBody"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="25dp"
+        android:layout_marginTop="10dp"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
         android:tint="@color/inline_action"
@@ -129,4 +129,14 @@
         android:layout_toEndOf="@+id/btnHeart"
         android:text="TextView"
         android:textSize="10sp" />
+
+    <ImageView
+        android:id="@+id/ivMedia"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_below="@+id/btnRetweet"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:visibility="gone"
+        app:srcCompat="@android:color/black" />
 </RelativeLayout>
