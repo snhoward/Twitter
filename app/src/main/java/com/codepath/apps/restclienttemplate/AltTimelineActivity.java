@@ -39,7 +39,7 @@ public class AltTimelineActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alt_timeline);
         ButterKnife.bind(this);
@@ -55,6 +55,7 @@ public class AltTimelineActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(AltTimelineActivity.this, ComposeActivity.class);
                 intent.putExtra("mode", 2); // pass arbitrary data to launched activity
+//                intent.putExtra("screenName", tweetAdapter.user.screenName);
                 AltTimelineActivity.this.startActivityForResult(intent, REQUEST_CODE);
             }
         });

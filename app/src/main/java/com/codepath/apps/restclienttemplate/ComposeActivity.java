@@ -6,8 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.codepath.apps.restclienttemplate.models.Tweet;
+import com.codepath.apps.restclienttemplate.models.User;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.json.JSONException;
@@ -22,6 +26,9 @@ public class ComposeActivity extends AppCompatActivity {
 
     TwitterClient client;
     @BindView(R.id.etTweet) EditText etTweet;
+    @BindView(R.id.tvScreenName) TextView tvScreenName;
+    @BindView(R.id.tvUsername) TextView tvUsername;
+    @BindView(R.id.ivProfile) ImageView ivProfile;
     // Instance of the progress action-view
 
     @Override
@@ -34,6 +41,25 @@ public class ComposeActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        client.getUserInfo(new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                User user = null;
+                try {
+                    user = User.fromJSON(response);
+                    tvUsername.setText(user.name);
+                    tvScreenName.setText("@" + user.screenName);
+
+                    Glide.with(ComposeActivity.this)
+                            .load(user.profileImageUrl)
+                            .into(ivProfile);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     public void sendRequest(View view) {

@@ -25,6 +25,7 @@ public class TwitterClient extends OAuthBaseClient {
 	public static final String REST_URL = "https://api.twitter.com/1.1/";
 	public static final String REST_CONSUMER_KEY = "CDVQ7hdqDVnMgIKAXbLREcGYG";
 	public static final String REST_CONSUMER_SECRET = "eM0WhgdQHeEcnX0P22wCblSVWuaK8uMUXJJ1KFSSfjNGvCxk80";
+	public static final String REST_USER_URL_ADD_ON = "users/show.json?screen_name=snhoward22"; //only works for me so far
 
 	// Landing page to indicate the OAuth flow worked in case Chrome for Android 25+ blocks navigation back to the app.
 	public static final String FALLBACK_URL = "https://codepath.github.io/android-rest-client-template/success.html";
@@ -58,6 +59,18 @@ public class TwitterClient extends OAuthBaseClient {
         params.put("status", message);
         client.post(apiUrl, params, handler);
     }
+
+    public void getUserInfo(AsyncHttpResponseHandler handler) {
+        String apiUrl = getApiUrl("users/show.json?screen_name=snhoward22");
+        RequestParams params = new RequestParams();
+        params.put("screen_name", 1);
+        params.put("name", 1);
+        params.put("profile_image_url", 1);
+        client.get(apiUrl, params, handler);
+    }
+
+
+
 
 	/* 1. Define the endpoint URL with getApiUrl and pass a relative path to the endpoint
 	 * 	  i.e getApiUrl("statuses/home_timeline.json");
