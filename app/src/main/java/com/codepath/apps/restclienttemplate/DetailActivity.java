@@ -46,8 +46,8 @@ public class DetailActivity extends AppCompatActivity {
         tvScreenName.setText("@" + tweet.user.screenName);
         tvUsername.setText(tweet.user.name);
         tvBody.setText(tweet.body);
-        tvFavoriteCount.setText("" + tweet.favoriteCount + " Likes");
-        tvRetweetCount.setText("" + tweet.retweetCount + " Retweets");
+        tvFavoriteCount.setText("" + tweet.favoriteCount);
+        tvRetweetCount.setText("" + tweet.retweetCount);
         tvTimeStamp.setText(tweet.getOriginalTimeAgo(tweet.createdAt));
 
         Glide.with(ivProfileImage.getContext())

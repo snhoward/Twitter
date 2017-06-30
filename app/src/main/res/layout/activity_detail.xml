@@ -92,20 +92,25 @@
         android:id="@+id/tvRetweetCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textSize="18sp"
+        android:layout_alignStart="@+id/tvTimeStamp"
         android:layout_below="@+id/tvTimeStamp"
-        android:layout_alignStart="@+id/tvTimeStamp" />
+        android:text="TextView"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvFavoriteCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvTimeStamp"
+        android:layout_alignBaseline="@+id/tvRetweetCount"
+        android:layout_alignBottom="@+id/tvRetweetCount"
         android:layout_marginLeft="5dp"
-        android:layout_toEndOf="@+id/tvRetweetCount"
+        android:layout_toEndOf="@+id/tvUsername"
         android:text="TextView"
-        android:textSize="18sp" />
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/ivMedia"
@@ -116,5 +121,25 @@
         android:layout_marginTop="32dp"
         android:visibility="gone"
         app:srcCompat="@android:color/black" />
+
+    <TextView
+        android:id="@+id/tvFavorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvFavoriteCount"
+        android:layout_toEndOf="@+id/tvFavoriteCount"
+        android:layout_marginLeft="3dp"
+        android:text="Favorites"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvRetweet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvRetweetCount"
+        android:layout_alignStart="@+id/tvScreenName"
+        android:layout_marginLeft="3dp"
+        android:text="Retweets"
+        android:textSize="18sp" />
 
 </RelativeLayout>
