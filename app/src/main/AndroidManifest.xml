@@ -36,15 +36,15 @@
         <activity android:name=".TimelineActivity" />
         <activity
             android:name=".ComposeActivity"
-            android:theme="@style/TwitterTheme.NoActionBar"></activity>
+            android:theme="@style/TwitterTheme.NoActionBar" />
         <activity
             android:name=".AltTimelineActivity"
             android:label="@string/title_activity_alt_compose"
-            android:theme="@style/TwitterTheme.NoActionBar"></activity>
+            android:theme="@style/TwitterTheme.NoActionBar" />
         <activity
             android:name=".DetailActivity"
-            android:theme="@style/TwitterTheme.NoActionBar"></activity>
-
+            android:theme="@style/TwitterTheme.NoActionBar" />
+        <activity android:name=".ProfileActivity"></activity>
     </application>
 
 </manifest>

@@ -45,8 +45,6 @@ public abstract class TweetsListFragment extends Fragment {
     protected TwitterClient client;
     @BindView(R.id.swipeContainer)  SwipeRefreshLayout swipeContainer;
     @BindView(R.id.rvTweets) RecyclerView rvTweets;
-
-
     abstract protected void populateTimeline();
 
     @Nullable
@@ -74,6 +72,7 @@ public abstract class TweetsListFragment extends Fragment {
                 // Your code to refresh the list here.
                 // Make sure you call swipeContainer.setRefreshing(false)
                 // once the network request has completed successfully.
+                swipeContainer.setRefreshing(false);
                 populateTimeline();
             }
         });
