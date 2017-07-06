@@ -1,9 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.codepath.apps.restclienttemplate.ProfileActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:id="@+id/rlUserHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <ImageView
+            android:id="@+id/ivBackgroundImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:adjustViewBounds="true"
+            android:background="@android:color/black"
+            android:cropToPadding="true"
+            android:scaleType="fitXY"
+            app:srcCompat="@android:color/transparent" />
+
+        <ImageView
+            android:id="@+id/ivProfileImage"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="80dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/ic_profile" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/ivProfileImage"
+            android:layout_below="@+id/ivProfileImage"
+            android:layout_marginBottom="5dp"
+            android:text="Name"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/ivProfileImage"
+            android:layout_below="@+id/tvName"
+            android:layout_marginBottom="5dp"
+            android:text="Username" />
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/ivProfileImage"
+            android:layout_below="@+id/tvUsername"
+            android:layout_marginBottom="5dp"
+            android:text="Description"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tvLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/ivProfileImage"
+            android:layout_below="@+id/tvDescription"
+            android:layout_marginBottom="5dp"
+            android:text="Location"
+            android:textColor="@color/twitter_blue"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tvFollowingCount"
+            android:layout_marginRight="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/tvLocation"
+            android:layout_below="@+id/tvLocation"
+            android:text="000"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvFollowing"
+            android:layout_marginRight="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Following"
+            android:textAllCaps="true"
+            android:textSize="12sp"
+            android:layout_alignBaseline="@+id/tvFollowingCount"
+            android:layout_alignBottom="@+id/tvFollowingCount"
+            android:layout_toEndOf="@+id/tvFollowingCount" />
+
+        <TextView
+            android:id="@+id/tvFollowersCount"
+            android:layout_marginRight="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tvFollowing"
+            android:layout_alignBottom="@+id/tvFollowing"
+            android:layout_marginLeft="20dp"
+            android:layout_toEndOf="@+id/tvFollowing"
+            android:text="000"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvFollowers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tvFollowersCount"
+            android:layout_alignBottom="@+id/tvFollowersCount"
+            android:layout_toEndOf="@+id/tvFollowersCount"
+            android:text="Followers"
+            android:textAllCaps="true"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/btnEditProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/ivBackgroundImage"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="@android:color/transparent"
+            android:elevation="0dp"
+            android:fontFamily="sans-serif"
+            android:text="Edit profile"
+            android:textAllCaps="false"
+            android:textAppearance="@android:style/TextAppearance.Material.Widget.Button"
+            android:textSize="12sp"
+            android:visibility="visible" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:background="@color/medium_gray_50"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/tvFollowingCount"
+            android:id="@+id/view" />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/flContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/rlUserHeader">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fabCompose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            app:backgroundTint="@color/twitter_blue"
+            app:elevation="20dp"
+            app:fabSize="normal"
+            app:srcCompat="@drawable/ic_compose" />
+    </FrameLayout>
+
+</RelativeLayout>

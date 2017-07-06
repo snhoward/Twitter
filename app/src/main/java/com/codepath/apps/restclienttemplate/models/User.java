@@ -16,6 +16,8 @@ public class User {
     public long uid;
     public String screenName;
     public String profileImageUrl;
+    public String backgroundImageUrl;
+    public String description, location, following, followers;
 
     // no-arg, empty constructor required for Parceler
     public User() {}
@@ -28,7 +30,12 @@ public class User {
         user.name = json.getString("name");
         user.uid = json.getLong("id");
         user.screenName = json.getString("screen_name");
-        user.profileImageUrl = json.getString("profile_image_url");
+        user.profileImageUrl = json.getString("profile_image_url").replace("_normal", "");
+        user.backgroundImageUrl = json.getString("profile_banner_url").replace("_normal", "");
+        user.description = json.getString("description");
+        user.location = json.getString("location");
+        user.following = json.getString("friends_count").toString();
+        user.followers = json.getString("followers_count").toString();
 
         return user;
     }

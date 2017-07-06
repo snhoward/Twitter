@@ -8,7 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.codepath.apps.restclienttemplate.fragments.TweetsPagerAdapter;
@@ -32,7 +32,7 @@ public class AltTimelineActivity extends AppCompatActivity {
     @BindView(R.id.viewpager) ViewPager vpPager;
     @BindView(R.id.sliding_tabs) TabLayout tabLayout;
     @BindView(R.id.fabCompose) FloatingActionButton fabCompose;
-    @BindView(R.id.ibProfile) ImageButton ibProfile;
+    @BindView(R.id.ivProfile) ImageView ivProfile;
     @BindView(R.id.toolbar) Toolbar toolbar;
 
     @Override
@@ -54,7 +54,7 @@ public class AltTimelineActivity extends AppCompatActivity {
             }
         });
 
-        ibProfile.setOnClickListener(new View.OnClickListener() {
+        ivProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(AltTimelineActivity.this, ProfileActivity.class);
@@ -71,7 +71,7 @@ public class AltTimelineActivity extends AppCompatActivity {
                     user = User.fromJSON(response);
                     Glide.with(AltTimelineActivity.this)
                             .load(user.profileImageUrl)
-                            .into(ibProfile);
+                            .into(ivProfile);
 
                 } catch (JSONException e) {
                     e.printStackTrace();

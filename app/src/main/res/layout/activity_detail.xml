@@ -112,16 +112,6 @@
         android:textSize="18sp"
         android:textStyle="bold" />
 
-    <ImageView
-        android:id="@+id/ivMedia"
-        android:layout_width="300dp"
-        android:layout_height="200dp"
-        android:layout_below="@+id/divider"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
-        android:visibility="gone"
-        app:srcCompat="@android:color/black" />
-
     <TextView
         android:id="@+id/tvFavorite"
         android:layout_width="wrap_content"
@@ -141,5 +131,15 @@
         android:layout_marginLeft="5dp"
         android:text="Retweets"
         android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/ivMedia"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_below="@+id/tvFavoriteCount"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:visibility="gone"
+        app:srcCompat="@android:color/black" />
 
 </RelativeLayout>
