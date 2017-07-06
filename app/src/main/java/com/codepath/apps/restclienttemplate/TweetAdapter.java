@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.codepath.apps.restclienttemplate.models.Tweet;
+import com.codepath.apps.restclienttemplate.models.User;
 
 import org.parceler.Parcels;
 
@@ -18,6 +19,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by snhoward on 6/26/17.
@@ -113,6 +115,17 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
                 context.startActivity(intent);
             }
         }
+
+        @OnClick(R.id.ivProfileImage)
+        public void startProfileActivity() {
+            Intent intent = new Intent(context, ProfileActivity.class);
+            int position = getAdapterPosition();
+            Tweet tweet = mTweets.get(position);
+            User user = tweet.user;
+            intent.putExtra(user.getClass().getSimpleName(), Parcels.wrap(user));
+            context.startActivity(intent);
+        }
+
     }
 
     // Clean all elements of the recycler
@@ -120,6 +133,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         mTweets.clear();
         notifyDataSetChanged();
     }
+
 }
 
 

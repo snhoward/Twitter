@@ -16,8 +16,8 @@ import com.codepath.apps.restclienttemplate.fragments.UserFragment;
 import com.codepath.apps.restclienttemplate.models.User;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
-import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcels;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,6 +26,7 @@ import cz.msebera.android.httpclient.Header;
 public class ProfileActivity extends AppCompatActivity {
 
     TwitterClient client;
+    User user;
     private final int REQUEST_CODE = 20;
 
 
@@ -49,7 +50,9 @@ public class ProfileActivity extends AppCompatActivity {
         client = TwitterApp.getRestClient();
 
 
-        String screenName = getIntent().getStringExtra("screen_name");
+        user = (User) Parcels.unwrap(getIntent().getParcelableExtra(User.class.getSimpleName()));
+        String screenName = user.screenName;
+//        getIntent().getStringExtra("screen_name");
         UserFragment userTimelineFragment = UserFragment.newInstance(screenName);
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -71,9 +74,6 @@ public class ProfileActivity extends AppCompatActivity {
         client.getUserInfo(new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                User user = null;
-                try {
-                    user = User.fromJSON(response);
                     tvName.setText(user.name);
                     tvUsername.setText("@" + user.screenName);
                     tvDescription.setText(user.description);
@@ -88,10 +88,6 @@ public class ProfileActivity extends AppCompatActivity {
                     Glide.with(ProfileActivity.this)
                             .load(user.backgroundImageUrl)
                             .into(ivBackgroundImage);
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
             }
         });
 
