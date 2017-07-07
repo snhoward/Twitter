@@ -32,6 +32,9 @@
         android:layout_alignStart="@+id/tvUsername"
         android:layout_below="@+id/tvScreenName"
         android:lineSpacingExtra="5dp"
+        android:autoLink="all"
+        android:linksClickable="true"
+        android:textColorLink="@color/twitter_blue"
         android:text="TextView" />
 
     <TextView
