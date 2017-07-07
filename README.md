@@ -24,8 +24,8 @@ The following **optional** features are implemented:
 * [x] User can **pull down to refresh tweets timeline**
 * [x] User is using **"Twitter branded" colors and styles**
 * [ ] User sees an **indeterminate progress indicator** when any background or network task is happening
-* [ ] User can **select "reply" from detail view to respond to a tweet**
-  * [ ] User that wrote the original tweet is **automatically "@" replied in compose**
+* [x] User can **select "reply" from detail view to respond to a tweet**
+  * [x] User that wrote the original tweet is **automatically "@" replied in compose**
 * [x] User can tap a tweet to **open a detailed tweet view**
   * [ ] User can **take favorite (and unfavorite) or reweet** actions on a tweet
 * [x] User can **see embedded image media within a tweet** on list or detail view.
@@ -36,7 +36,7 @@ The following **bonus** features are implemented:
 * [ ] Compose tweet functionality is build using modal overlay
 * [x] Use Parcelable instead of Serializable using the popular [Parceler library](http://guides.codepath.com/android/Using-Parceler).
 * [ ] Replace all icon drawables and other static image assets with [vector drawables](http://guides.codepath.com/android/Drawables#vector-drawables) where appropriate.
-* [ ] User can **click a link within a tweet body** on tweet details view. The click will launch the web browser with relevant page opened.
+* [x] User can **click a link within a tweet body** on tweet details view. The click will launch the web browser with relevant page opened.
 * [ ] User can view following / followers list through any profile they view.
 * [x] User can see embedded image media within the tweet detail view
 * [x] Use the popular ButterKnife annotation library to reduce view boilerplate.
@@ -46,10 +46,12 @@ The following **bonus** features are implemented:
 
 The following **additional** features are implemented:
 
-* [x] List anything else that you can get done to improve the app functionality!
 * [x] User can see the amount of retweets and favorites a tweet has by the respective buttons
 * [x] User can compose through a floating action tab rather than a menu button
 * [x] Nicer toolbar with logo replaces old action bar
+* [x] Links within bodies are automatically autolinked
+* [x] User's location is shown in their profile view
+* [x] User can see the amount of followers and following in any profile
 
 ## Video Walkthrough
 
