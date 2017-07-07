@@ -116,8 +116,6 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
             }
         }
 
-
-
         @OnClick(R.id.ivProfileImage)
         public void startProfileActivity() {
             Intent intent = new Intent(context, ProfileActivity.class);
