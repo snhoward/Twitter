@@ -52,7 +52,6 @@ public class ProfileActivity extends AppCompatActivity {
 
         user = (User) Parcels.unwrap(getIntent().getParcelableExtra(User.class.getSimpleName()));
         String screenName = user.screenName;
-//        getIntent().getStringExtra("screen_name");
         UserFragment userTimelineFragment = UserFragment.newInstance(screenName);
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();

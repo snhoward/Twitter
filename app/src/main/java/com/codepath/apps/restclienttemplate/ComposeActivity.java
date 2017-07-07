@@ -29,6 +29,7 @@ public class ComposeActivity extends AppCompatActivity {
     @BindView(R.id.tvScreenName) TextView tvScreenName;
     @BindView(R.id.tvUsername) TextView tvUsername;
     @BindView(R.id.ivProfile) ImageView ivProfile;
+    @BindView(R.id.tvReply) TextView tvReply;
     // Instance of the progress action-view
 
     @Override
@@ -50,6 +51,13 @@ public class ComposeActivity extends AppCompatActivity {
                     user = User.fromJSON(response);
                     tvUsername.setText(user.name);
                     tvScreenName.setText("@" + user.screenName);
+                    tvReply.setText("Replying to " + getIntent().getStringExtra("screen_name"));
+                    if(tvReply.toString() != "") {
+                        tvReply.setVisibility(View.VISIBLE);
+                    } else {
+                        tvReply.setVisibility(View.GONE);
+                    }
+
 
                     Glide.with(ComposeActivity.this)
                             .load(user.profileImageUrl)
@@ -64,7 +72,12 @@ public class ComposeActivity extends AppCompatActivity {
 
     public void sendRequest(View view) {
         // set the request parameters
-        client.sendTweet(etTweet.getText().toString(), new JsonHttpResponseHandler() {
+        long replyId = getIntent().getLongExtra("replyId", -1);
+        String message = "";
+        if (replyId > 0) {
+            message = getIntent().getStringExtra("screen_name") + " ";
+        }
+        client.sendTweet(replyId, message.toString() + etTweet.getText().toString(), new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 Tweet tweet = null;

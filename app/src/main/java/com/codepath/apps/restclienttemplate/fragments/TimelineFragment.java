@@ -10,4 +10,5 @@ public class TimelineFragment extends TweetsListFragment {
     protected void populateTimeline() {
         client.getHomeTimeline(getTimelineHandler());
     }
+
 }

@@ -17,6 +17,7 @@ import com.codepath.apps.restclienttemplate.R;
 import com.codepath.apps.restclienttemplate.TweetAdapter;
 import com.codepath.apps.restclienttemplate.TwitterApp;
 import com.codepath.apps.restclienttemplate.TwitterClient;
+import com.codepath.apps.restclienttemplate.models.EndlessRecyclerViewScrollListener;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -42,6 +43,7 @@ public abstract class TweetsListFragment extends Fragment {
     private final int REQUEST_CODE = 20;
     private TweetAdapter tweetAdapter;
     private ArrayList<Tweet> tweets;
+    private EndlessRecyclerViewScrollListener scrollListener;
     protected TwitterClient client;
     @BindView(R.id.swipeContainer)  SwipeRefreshLayout swipeContainer;
     @BindView(R.id.rvTweets) RecyclerView rvTweets;
@@ -63,6 +65,20 @@ public abstract class TweetsListFragment extends Fragment {
         rvTweets.setLayoutManager(linearLayoutManager);
         // set the adapter
         rvTweets.setAdapter(tweetAdapter);
+
+        // Retain an instance so that you can call `resetState()` for fresh searches
+        scrollListener = new EndlessRecyclerViewScrollListener(linearLayoutManager) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                // Triggered only when new data needs to be appended to the list
+                // Add whatever code is needed to append new items to the bottom of the list
+//                fetchTimelineAsync();
+            }
+        };
+
+        // Adds the scroll listener to RecyclerView
+        rvTweets.addOnScrollListener(scrollListener);
+
         populateTimeline();
 
         // Setup refresh listener which triggers new data loading
@@ -141,7 +157,9 @@ public abstract class TweetsListFragment extends Fragment {
             Tweet tweet = Parcels.unwrap(data.getParcelableExtra("tweet"));
             tweets.add(0, tweet);
             tweetAdapter.notifyItemInserted(0);
-            rvTweets.scrollToPosition(0);
+            rvTweets.getLayoutManager().scrollToPosition(0);
+//            rvTweets.scrollToPosition(0);
+//            TODO
         }
     }
 }

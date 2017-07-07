@@ -6,7 +6,6 @@ package com.codepath.apps.restclienttemplate.fragments;
 
 public class MentionsFragment extends TweetsListFragment {
 
-
     @Override
     protected void populateTimeline() {
         client.getMentionsTimeline(getTimelineHandler());

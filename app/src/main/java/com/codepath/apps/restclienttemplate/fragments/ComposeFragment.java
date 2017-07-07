@@ -83,22 +83,22 @@ public class ComposeFragment extends Fragment {
 
     }
 
-    public void sendRequests(View view) {
-        // set the request parameters
-        client.sendTweet(etTweet.getText().toString(), new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                Tweet tweet = null;
-                try {
-                    tweet = Tweet.fromJSON(response);
-                    // send result back to TimelineActivity
-                    onSubmit(tweet);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
+//    public void sendRequests(View view) {
+//        // set the request parameters
+//        client.sendTweet(etTweet.getText().toString(), new JsonHttpResponseHandler() {
+//            @Override
+//            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//                Tweet tweet = null;
+//                try {
+//                    tweet = Tweet.fromJSON(response);
+//                    // send result back to TimelineActivity
+//                    onSubmit(tweet);
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
+//    }
 
     public void onSubmit(Tweet tweet) {
         // Prepare data intent

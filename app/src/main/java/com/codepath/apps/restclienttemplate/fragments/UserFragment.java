@@ -24,4 +24,5 @@ public class UserFragment extends TweetsListFragment {
         }
         client.getUserTimeline(screenName, getTimelineHandler());
     }
+
 }

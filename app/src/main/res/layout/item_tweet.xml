@@ -97,6 +97,7 @@
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
         android:tint="@color/inline_action"
+        android:onClick="startReplyActivity"
         app:srcCompat="@drawable/ic_reply" />
 
     <ImageButton

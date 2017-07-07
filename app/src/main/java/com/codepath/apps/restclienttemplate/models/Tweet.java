@@ -110,4 +110,8 @@ public class Tweet {
         }
         return time;
     }
+
+    public long getId() {
+        return uid;
+    }
 }

@@ -116,6 +116,8 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
             }
         }
 
+
+
         @OnClick(R.id.ivProfileImage)
         public void startProfileActivity() {
             Intent intent = new Intent(context, ProfileActivity.class);
@@ -126,12 +128,28 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
             context.startActivity(intent);
         }
 
+        @OnClick(R.id.btnReply)
+        public void startReplyActivity() {
+            Intent intent = new Intent(context, ComposeActivity.class);
+            int position = getAdapterPosition();
+            Tweet tweet = mTweets.get(position);
+            long id = tweet.getId();
+            User user = tweet.user;
+            intent.putExtra("screen_name", "@" + user.screenName);
+            intent.putExtra("replyId", id);
+            context.startActivity(intent);
+        }
+
     }
 
     // Clean all elements of the recycler
     public void clear() {
         mTweets.clear();
         notifyDataSetChanged();
+    }
+
+    public Tweet getAt(int position) {
+        return this.mTweets.get(position);
     }
 
 }
