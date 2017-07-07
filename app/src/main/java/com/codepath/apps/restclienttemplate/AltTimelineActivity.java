@@ -12,22 +12,23 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.codepath.apps.restclienttemplate.fragments.TweetsPagerAdapter;
+import com.codepath.apps.restclienttemplate.models.CircleTransform;
 import com.codepath.apps.restclienttemplate.models.User;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcels;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cz.msebera.android.httpclient.Header;
 
-
 public class AltTimelineActivity extends AppCompatActivity {
 
     private final int REQUEST_CODE = 20;
     protected TwitterClient client;
-
+    private User user;
 
     @BindView(R.id.viewpager) ViewPager vpPager;
     @BindView(R.id.sliding_tabs) TabLayout tabLayout;
@@ -41,6 +42,16 @@ public class AltTimelineActivity extends AppCompatActivity {
         setContentView(R.layout.activity_alt_timeline);
         ButterKnife.bind(this);
         client = TwitterApp.getRestClient();
+        client.getUserInfo(new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                try {
+                    user = User.fromJSON(response);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -58,7 +69,7 @@ public class AltTimelineActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(AltTimelineActivity.this, ProfileActivity.class);
-                intent.putExtra("mode", 2);
+                intent.putExtra(user.getClass().getSimpleName(), Parcels.wrap(user));
                 AltTimelineActivity.this.startActivity(intent);
             }
         });
@@ -71,6 +82,7 @@ public class AltTimelineActivity extends AppCompatActivity {
                     user = User.fromJSON(response);
                     Glide.with(AltTimelineActivity.this)
                             .load(user.profileImageUrl)
+                            .transform(new CircleTransform(AltTimelineActivity.this))
                             .into(ivProfile);
 
                 } catch (JSONException e) {
